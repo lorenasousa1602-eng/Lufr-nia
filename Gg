@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Aniversário 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Bolo */
+    .bolo {
+      position: relative;
+      margin: 40px auto;
+      width: 200px;
+      height: 150px;
+      background: #8b0000;
+      border-radius: 10px;
+      box-shadow: 0 8px #5c0000;
+    }
+    .bolo::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 25px;
+      width: 150px;
+      height: 50px;
+      background: #ffb6c1;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 8px #d46a6a;
+    }
+    /* Velas */
+    .vela {
+      position: absolute;
+      top: -70px;
+      width: 10px;
+      height: 40px;
+      background: #fff;
+      border-radius: 3px;
+    }
+    .vela:nth-child(1) { left: 40px; }
+    .vela:nth-child(2) { left: 95px; }
+    .vela:nth-child(3) { left: 150px; }
+
+    /* Chama */
+    .chama {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15px;
+      height: 20px;
+      background: radial-gradient(circle, yellow 40%, orange 70%, red 90%);
+      border-radius: 50% 50% 50% 50%;
+      animation: flicker 0.3s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+    }
+
+    .mensagem {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    /* Balões */
+    .balao {
+      position: absolute;
+      bottom: -150px;
+      font-size: 40px;
+      animation: subir 8s linear infinite;
+    }
+    @keyframes subir {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Feliz Aniversário 🎉</h1>
+
+  <!-- Bolo com velas -->
+  <div class="bolo">
+    <div class="vela"><div class="chama"></div></div>
+    <div class="vela"><div class="chama"></div></div>
+    <div class="vela"><div class="chama"></div></div>
+  </div>
+
+  <div class="mensagem">
+    Que o teu dia seja doce como este bolo, cheio de amor, sorrisos e sonhos realizados! 💕
+  </div>
+
+  <!-- Música -->
+  <audio autoplay loop>
+    <source src="parabens.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Balões -->
+  <script>
+    function criarBalao() {
+      const balao = document.createElement("div");
+      balao.classList.add("balao");
+      balao.innerHTML = "🎈";
+      balao.style.left = Math.random() * 100 + "vw";
+      balao.style.animationDuration = (Math.random() * 3 + 5) + "s";
+      document.body.appendChild(balao);
+      setTimeout(() => balao.remove(), 8000);
+    }
+    setInterval(criarBalao, 600);
+  </script>
+</body>
+</html>
